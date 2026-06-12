@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "Angel Velasquez",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -4.9, "left": 81.4, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": -22.4,
+      "left": 284,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-gas-sensor", "id": "gasSensor", "top": 223.5, "left": 64.6, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 31.2,
+      "left": -36.6,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "lcd:GND", "esp:GND.1", "black", [ "h-48", "v144", "h-138.7" ] ],
+    [ "lcd:VCC", "esp:3V3", "red", [ "h-67.2", "v139.4" ] ],
+    [ "lcd:SDA", "esp:D21", "orange", [ "h-19.2", "v77", "h-67.2", "v-47.6" ] ],
+    [ "lcd:SCL", "esp:D22", "purple", [ "h-9.6", "v-38.1", "h-76.8", "v29.1" ] ],
+    [ "gasSensor:GND", "esp:GND.1", "black", [ "h76.8", "v-115.9" ] ],
+    [ "gasSensor:DOUT", "esp:D2", "green", [ "h9.6", "v-124.4" ] ],
+    [ "gasSensor:AOUT", "esp:D34", "green", [ "h0", "v-28.8", "h-153.6", "v-163.2" ] ],
+    [ "buzzer:2", "esp:D13", "blue", [ "v0" ] ],
+    [ "buzzer:1", "esp:GND.2", "black", [ "v0" ] ],
+    [ "gasSensor:VCC", "esp:VIN", "red", [ "h19.2", "v37.5", "h-182.4", "v-153.6" ] ]
+  ],
+  "dependencies": {}
+}
